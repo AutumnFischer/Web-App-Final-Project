@@ -10,13 +10,13 @@ const router = (app) => {
 
     app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-    app.get('/game', mid.requiresLogin, controllers.Game.gamePage);
+    app.get('/game', mid.requiresSecure, mid.requiresLogin, controllers.Game.gamePage);
 
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
-    app.get('/highscores', mid.requiresLogin, controllers.Scoreboard.getHighscorePage);
-    app.post('/highscores', mid.requiresLogin, controllers.Scoreboard.submitHighscore);
-    app.get('/api/scores', mid.requiresLogin, controllers.Scoreboard.getHighscores);
+    app.get('/highscores', mid.requiresSecure, mid.requiresLogin, controllers.Scoreboard.getHighscorePage);
+    app.post('/highscores', mid.requiresSecure, mid.requiresLogin, controllers.Scoreboard.submitHighscore);
+    // app.get('/highscores', mid.requiresSecure, mid.requiresLogin, controllers.Scoreboard.getHighscores);
 };
 
 module.exports = router;

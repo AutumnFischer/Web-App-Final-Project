@@ -54,7 +54,7 @@ redisClient.connect().then(() => {
 
   app.set('view engine', 'handlebars');
 
-  // app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
+  app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 
   router(app);
 
